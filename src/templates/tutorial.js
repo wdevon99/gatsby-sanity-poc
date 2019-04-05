@@ -1,6 +1,9 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
+import { PageHeader } from 'antd';
+import WikiLayout from '../layout/WikiLayout'
+import { navigateTo } from 'gatsby-link';
 
 export const query = graphql`
   query($slug: String) {
@@ -18,12 +21,15 @@ export const query = graphql`
 `;
 
 export default ({ data }) => (
-  <div>
+  <WikiLayout>
+    <PageHeader
+      onBack={() => { navigateTo('tutorials')}}
+      title={data.sanityTutorial.title}
+    />
     <Image
       fluid={data.sanityTutorial.mainImage.asset.fluid}
       alt={data.sanityTutorial.title}
+      style={{ width: 800 }}
     />
-    <h1>{data.sanityTutorial.title}</h1>
-    <Link to="/">Back to home</Link>
-  </div>
+  </WikiLayout>
 );
