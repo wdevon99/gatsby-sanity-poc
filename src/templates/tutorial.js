@@ -4,11 +4,13 @@ import Image from 'gatsby-image';
 import { PageHeader } from 'antd';
 import WikiLayout from '../layout/WikiLayout'
 import { navigateTo } from 'gatsby-link';
+import BlockContent from '@sanity/block-content-to-react';
 
 export const query = graphql`
   query($slug: String) {
     sanityTutorial(slug: { current: { eq: $slug } }) {
-      title
+      title,
+      description,
       mainImage {
         asset {
           fluid {
@@ -24,12 +26,15 @@ export default ({ data }) => (
   <WikiLayout>
     <PageHeader
       onBack={() => { navigateTo('tutorials')}}
-      title={data.sanityTutorial.title}
+      title={"Back"}
     />
+    <h1>{data.sanityTutorial.title}</h1>
+    <p>{data.sanityTutorial.description}</p>
     <Image
       fluid={data.sanityTutorial.mainImage.asset.fluid}
       alt={data.sanityTutorial.title}
       style={{ width: 800 }}
     />
+    <BlockContent blocks={data.sanityTutorial.body}/>,
   </WikiLayout>
 );

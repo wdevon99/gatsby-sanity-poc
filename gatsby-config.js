@@ -13,9 +13,9 @@ module.exports = {
       options: {
         projectId: 'vi3cop8z',
         dataset: 'production',
-        overlayDrafts: true,
-        watchMode: true,
-        token: process.env.SANITY_TOKEN
+        // overlayDrafts: true,
+        // watchMode: true,
+        // token: process.env.SANITY_TOKEN
       }
     },
     {

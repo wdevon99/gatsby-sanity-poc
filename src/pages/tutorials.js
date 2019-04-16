@@ -4,6 +4,7 @@ import { Card } from 'antd'
 import WikiLayout from '../layout/WikiLayout';
 import Image from 'gatsby-image';
 
+
 export const query = graphql`
   {
     allSanityTutorial {
