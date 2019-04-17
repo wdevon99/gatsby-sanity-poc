@@ -1,9 +1,13 @@
 import React from "react";
+import { Menu, Icon } from 'antd';
 import { Link, graphql } from "gatsby"
 import { Card } from 'antd'
-import WikiLayout from '../layout/WikiLayout';
 import Image from 'gatsby-image';
+import MainLayout from '../../layout/MainLayout';
+import SideNavBar from '../../components/SideNavBar';
 
+
+const { SubMenu } = Menu;
 
 export const query = graphql`
   {
@@ -11,6 +15,7 @@ export const query = graphql`
       edges {
         node {
           title
+          description 
           slug {
             current
           }
@@ -27,13 +32,15 @@ export const query = graphql`
   }
 `;
 
-
 export default ({ data }) => (
-    <WikiLayout>
+    <MainLayout
+        SiderBarComponent={<DocsSideBar tutorials={data.allSanityTutorial.edges}/>}
+    >
         <h1>Tutorials</h1>
-        <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap"}}>   
-            {data.allSanityTutorial.edges.map(({ node: tutorial }) => (
+        <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+            {data.allSanityTutorial.edges.map(({ node: tutorial }, index) => (
                 <Card
+                    key={index}
                     style={{ width: 300, margin: 10 }}
                     cover={
                         <Image
@@ -43,8 +50,17 @@ export default ({ data }) => (
                     }
                 >
                     <h1><Link to={tutorial.slug.current}>{tutorial.title}</Link></h1>
+                    <p>{tutorial.description}</p>
                 </Card>
             ))}
         </div>
-    </WikiLayout>
+    </MainLayout>
+);
+
+const DocsSideBar = ({ tutorials }) => (
+    <SideNavBar>
+        <SubMenu key="sub1" title={<span><Icon type="rocket" />Using the API</span>}>
+            <Menu.Item key="1">ONE</Menu.Item>
+        </SubMenu>
+    </SideNavBar>
 );
