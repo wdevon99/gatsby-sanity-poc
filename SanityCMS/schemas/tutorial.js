@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'tutorialCategory',
+      title: 'Category',
+      type: 'reference',
+      to: { type: 'tutorialCategory' }
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string'
