@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import { PageHeader } from 'antd';
-import WikiLayout from '../layout/WikiLayout'
+import MainLayout from '../layout/MainLayout'
 import { navigateTo } from 'gatsby-link';
 import BlockContent from '@sanity/block-content-to-react';
 
@@ -23,9 +23,9 @@ export const query = graphql`
 `;
 
 export default ({ data }) => (
-  <WikiLayout>
+  <MainLayout>
     <PageHeader
-      onBack={() => { navigateTo('tutorials')}}
+      onBack={() => { navigateTo('tutorials/overview')}}
       title={"Back"}
     />
     <h1>{data.sanityTutorial.title}</h1>
@@ -36,5 +36,5 @@ export default ({ data }) => (
       style={{ width: 800 }}
     />
     <BlockContent blocks={data.sanityTutorial.body}/>,
-  </WikiLayout>
+  </MainLayout>
 );

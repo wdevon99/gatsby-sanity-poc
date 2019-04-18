@@ -36,6 +36,8 @@ export default class AuthService {
   }
 
   logout = () => {
+    //clearing localstore
+    localStorage.clear();
     return this.state.userManager.signoutRedirect();
   }
 }

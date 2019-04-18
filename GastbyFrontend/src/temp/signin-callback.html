@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Processing...</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client/1.6.1/oidc-client.js"></script>
+    </head>
+
+    <body>
+        <h1>Processing...</h1>
+        <script>
+            var mgr = new Oidc.UserManager();
+            mgr.signinRedirectCallback().then(function (user) {
+                window.history.replaceState({}, window.document.title, window.location.origin);
+                console.log(user)
+                localStorage.setItem('user', JSON.stringify(user))
+                setTimeout(() => {
+                   window.location = "/";
+                }, 1000);
+            }, function (error) {
+                console.error(error);
+            });
+        </script>
+    </body>
+</html>
