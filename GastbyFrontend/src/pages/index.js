@@ -4,10 +4,6 @@ import { withAuth } from '../providers/AuthProvider';
 
 
 class LandingPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { authState } = this.props;
         return (

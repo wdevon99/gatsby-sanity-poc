@@ -1,7 +1,8 @@
 import React from "react";
 import { Menu, Icon } from 'antd';
-import { Link, graphql } from "gatsby"
-import { Card } from 'antd'
+import { Link, graphql } from "gatsby";
+import _ from 'lodash';
+import { Card } from 'antd';
 import Image from 'gatsby-image';
 import MainLayout from '../../layout/MainLayout';
 import SideNavBar from '../../components/SideNavBar';
@@ -14,10 +15,15 @@ export const query = graphql`
     allSanityTutorial {
       edges {
         node {
+          id
           title
           description 
           slug {
             current
+          }
+          tutorialCategory {
+            id
+            title
           }
           mainImage {
             asset {
@@ -32,9 +38,13 @@ export const query = graphql`
   }
 `;
 
-export default ({ data }) => (
+export default ({ data }) => {
+  const tutorials = data.allSanityTutorial.edges.map((tute) => tute.node);
+  const groupedTutorials = _.groupBy(tutorials, (tute) => tute.tutorialCategory.id);  
+
+  return (
     <MainLayout
-        SiderBarComponent={<DocsSideBar tutorials={data.allSanityTutorial.edges}/>}
+        SiderBarComponent={<DocsSideBar groupedTutorials={groupedTutorials}/>}
     >
         <h1>Tutorials</h1>
         <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
@@ -55,12 +65,21 @@ export default ({ data }) => (
             ))}
         </div>
     </MainLayout>
-);
+)
+};
 
-const DocsSideBar = ({ tutorials }) => (
+const DocsSideBar = ({ groupedTutorials }) => {  
+  return (
     <SideNavBar>
-        <SubMenu key="sub1" title={<span><Icon type="rocket" />Using the API</span>}>
-            <Menu.Item key="1">ONE</Menu.Item>
-        </SubMenu>
+        {Object.entries(groupedTutorials).map(([key, tutorialsArr]) => (
+          <SubMenu key={key} title={<span><Icon type="arrow-right" />{tutorialsArr[0].tutorialCategory.title}</span>}>
+            {tutorialsArr.map((tutorial) => (
+              <Menu.Item>
+                <Link to={tutorial.slug.current}>{tutorial.title}</Link>
+              </Menu.Item>
+            ))}
+          </SubMenu>
+        ))}
     </SideNavBar>
-);
+  );
+};

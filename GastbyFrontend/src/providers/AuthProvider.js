@@ -4,7 +4,6 @@ import AuthService from '../services/AuthService';
 const AuthContext = React.createContext();
 
 export default class AuthProvider extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -60,7 +59,12 @@ export const withAuth = (BaseComponent) => class AuthComponent extends React.Com
                 {(context) =>  (
                     <BaseComponent
                         {...this.props}
-                        authState={context.authState}
+                        authState={context ? context.authState : {
+                            loggedIn: false,
+                            userSigninFetching: false,
+                            userSigninError: "",
+                            user: null
+                        }}
                     />
                 )}
             </AuthContext.Consumer>
