@@ -27,6 +27,11 @@ const TopNavBar = ({ authState }) => {
                         <Icon type="align-left" />Tutorials
                     </Link>
                 </Menu.Item>
+                <Menu.Item key="3">
+                    <Link to='/api'>
+                        <Icon type="align-left" />Api
+                    </Link>
+                </Menu.Item>
                 <div style={{ float: 'right' }} >
                     {authState.loggedIn ? (
                         <div> 
