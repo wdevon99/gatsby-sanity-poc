@@ -9,6 +9,7 @@ import SideNavBar from '../../components/SideNavBar';
 import { withAuth } from "../../providers/AuthProvider";
 import 'es6-promise/lib/es6-promise/polyfill';
 import fetch from 'isomorphic-fetch';
+import './index.css';
 
 const { SubMenu } = Menu;
 
@@ -61,12 +62,20 @@ class API extends React.Component{
                 <br />
                 <h1>Company list</h1>
                 <br />
-                <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
                     {this.state.companies.map(e => {
                         return (
-                            <div style={{ height: 40, backgroundColor: '#fafcef', width: 500}}> 
-                                <span>{e.Name}</span>
+                            <React.Fragment>
+                            <div id={`${e.ID + 1}`} style={{ height: 500, backgroundColor: '#fafcef', width: 500, flexDirection: 'column'}}> 
+                                <a href={`#${e.ID + 1}`}>{e.Name}</a>
                             </div>
+                            <div id={`${e.ID + 2}`} style={{ height: 500, backgroundColor: '#fafcef', width: 500}}> 
+                            <a href={`#${e.ID + 2}`}>{e.Name + ' ----- Tets 02'}</a>
+                        </div>
+                        <div id={`${e.ID + 3}`} style={{ height: 500, backgroundColor: '#fafcef', width: 500}}> 
+                        <a href={`#${e.ID + 3}`}>{e.Name + ' ----- Tets 03'}</a>
+                    </div>
+                    </React.Fragment>
                         )
                     })}
                 </div>
