@@ -48,6 +48,9 @@ class API extends React.Component{
         .then(function(res) {
             console.log(res);
             context.setCompanies(res);
+        })
+        .catch(e => {
+            console.log(e);
         });
         // https://devapi-unieconomy.azurewebsites.net/api/init/companies
        }
