@@ -49,23 +49,27 @@ export default ({ data }) => {
     <MainLayout>
       <PageHeader
         onBack={() => { navigateTo('tutorials/overview') }}
-        title={"Back"}
+        title={"All Tutorials"}
       />
-      <h1>{data.sanityTutorial.title}</h1>
-      <p>{data.sanityTutorial.description}</p>
-      <Image
-        fluid={data.sanityTutorial.mainImage.asset.fluid}
-        alt={data.sanityTutorial.title}
-        style={{ width: 800 }}
-      />
-      {console.log(data.sanityTutorial.body)}
-      <BlockContent
-        blocks={data.sanityTutorial.body}
-        serializers={serializers}
-        imageOptions={{ w: 320, h: 240, fit: 'max' }}
-        projectId="vi3cop8z"
-        dataset="production"
-      />
+
+      <div style={{ margin: 20 }}>
+        <h1>{data.sanityTutorial.title}</h1>
+        <Image
+          fluid={data.sanityTutorial.mainImage.asset.fluid}
+          alt={data.sanityTutorial.title}
+          style={{ width: 400, margin: "10px 0px 20px 0px" }}
+        />
+        <p>{data.sanityTutorial.description}</p>
+        <hr style={{ margin: "30px 0px 30px 0px" }} />
+        {console.log(data.sanityTutorial.body)}
+        <BlockContent
+          blocks={data.sanityTutorial.body}
+          serializers={serializers}
+          imageOptions={{ w: 320, h: 240, fit: 'max' }}
+          projectId="vi3cop8z"
+          dataset="production"
+        />
+      </div>
     </MainLayout>
   )
 };

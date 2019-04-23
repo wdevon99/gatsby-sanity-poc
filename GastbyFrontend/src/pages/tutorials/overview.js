@@ -63,7 +63,7 @@ export default ({ data }) => {
                 />
               }
             >
-              <h1><Link to={tutorial.slug.current}>{tutorial.title}</Link></h1>
+              <h4><Link to={tutorial.slug.current}>{tutorial.title}</Link></h4>
               <p>{tutorial.description.substring(0, 75)}...</p>
               <Button type="primary" onClick={() => { navigate(tutorial.slug.current)}}>View</Button>
             </Card>
@@ -79,7 +79,7 @@ const DocsSideBar = ({ groupedTutorials }) => {
   return (
     <SideNavBar>
       {Object.entries(groupedTutorials).map(([key, tutorialsArr]) => (
-        <SubMenu key={key} title={<h1>{tutorialsArr[0].tutorialCategory.title}</h1>}>
+        <SubMenu key={key} title={<h3>{tutorialsArr[0].tutorialCategory.title}</h3>}>
           {tutorialsArr.map((tutorial) => (
             <Menu.Item>
               <Link to={tutorial.slug.current}>{tutorial.title}</Link>
