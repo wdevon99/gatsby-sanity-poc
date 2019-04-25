@@ -22,7 +22,9 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.0.8",
     "react-redux": "^7.0.2",
+    "react-youtube": "^7.9.0",
     "redux": "^4.0.1",
     "swagger-ui": "^3.22.0",
     "swagger-ui-themes": "^3.0.0"
