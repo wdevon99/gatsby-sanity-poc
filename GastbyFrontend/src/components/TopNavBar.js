@@ -28,20 +28,25 @@ const TopNavBar = ({ authState }) => {
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="3">
+                    <Link to='/apiCall'>
+                        <Icon type="align-left" />Api Call
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
                     <Link to='/api'>
                         <Icon type="align-left" />Api
                     </Link>
                 </Menu.Item>
                 <div style={{ float: 'right' }} >
                     {authState.loggedIn ? (
-                        <div> 
+                        <div>
                             {authState.user.profile.email}
                             <Avatar style={{ backgroundColor: '#489ace', verticalAlign: 'middle', margin: 10 }} size="large">{authState.user.profile.email[0]}</Avatar>
                             <Button type="secondary" onClick={() => { authState.authService.logout() }}>Logout</Button>
                         </div>
                     ) : (
-                        <Button type="primary" onClick={() => { authState.authService.login() }}>Login</Button>
-                    )}
+                            <Button type="primary" onClick={() => { authState.authService.login() }}>Login</Button>
+                        )}
                 </div>
             </Menu>
         </Layout.Header>
