@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, Tag } from 'antd';
 import Util from '../../util';
 import Constants from '../../constants';
 import CodeBlock from './CodeBlock';
@@ -49,11 +49,24 @@ class ActionTryNow extends React.Component {
             this.setState({ pathParams: { ...pathParams, [parameter.name]: event.target.value } })
         }
     }
+    
+    onCopySchema = (parameter) => {
+        const { bodyParams } = this.state;
+        this.setState({
+            bodyParams: { 
+                ...bodyParams, 
+                [parameter.name]: JSON.stringify(Util.getFormatedSchemaProperties(Util.convertCircularJsonToJson(parameter.schema)), undefined, 2)
+            } 
+        })
+    }
 
     renderParamInputItem = (parameter) => {
+        const { bodyParams, pathParams } = this.state;
+
         if (parameter.in === 'path') {
             return (
                 <Input
+                    value={pathParams && pathParams[parameter.name] ? pathParams[parameter.name] : ''}
                     style={styles.inputStyle}
                     placeholder={parameter.name}
                     onChange={(event) => this.onParamTextChange(event, parameter)}
@@ -61,12 +74,17 @@ class ActionTryNow extends React.Component {
             )
         } else {
             return (
-                <TextArea
-                    // value={JSON.stringify(Util.getFormatedSchemaProperties(Util.convertCircularJsonToJson(parameter.schema)))}
-                    style={styles.inputStyle}
-                    placeholder={parameter.name}
-                    onChange={(event) => this.onParamTextChange(event, parameter)}
-                />
+                <div>
+                    <div style={{ paddingBottom: 5 }}>
+                        <Tag color="blue" onClick={() => this.onCopySchema(parameter)}>Copy schema</Tag>
+                    </div>
+                    <TextArea
+                        value={bodyParams && bodyParams[parameter.name] ? bodyParams[parameter.name] : ''}
+                        style={styles.inputTextAreaStyle}
+                        placeholder={parameter.name}
+                        onChange={(event) => this.onParamTextChange(event, parameter)}
+                    />
+                </div>
             )
         }
     }
@@ -122,6 +140,11 @@ const styles = {
     },
     inputStyle: {
         width: 200,
+        marginBottom: 15
+    },
+    inputTextAreaStyle: {
+        width: 300,
+        height: 300,
         marginBottom: 15
     },
     responseContainer: {
