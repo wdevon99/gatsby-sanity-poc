@@ -22,6 +22,17 @@ class ActionTryNow extends React.Component {
     onTryNowClicked = () => {
         const { isClicked, bodyParams, pathParams } = this.state;
         const { authState, action, path } = this.props;
+
+
+        console.log("isClicked", isClicked)
+
+        console.log(  
+            action,
+            `${Constants.BASE_URL}${path}`,
+            { body: JSON.parse(bodyParams), path: JSON.parse(pathParams) },
+            authState.user.access_token
+        );
+
         if (!isClicked) {
             this.setState({ isClicked: true })
         } else {

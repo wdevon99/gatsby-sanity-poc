@@ -1,13 +1,10 @@
 import React from "react";
-import { Menu, Button } from 'antd';
+import { Button } from 'antd';
 import 'es6-promise/lib/es6-promise/polyfill';
-import _ from 'lodash';
 import MainLayout from '../../layout/MainLayout';
 import { withAuth } from "../../providers/AuthProvider";
 import fetch from 'isomorphic-fetch';
 import './index.css';
-
-const { SubMenu } = Menu;
 
 
 class APICall extends React.Component {

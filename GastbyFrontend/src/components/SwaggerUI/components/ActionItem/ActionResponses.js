@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tag } from 'antd';
+import { Tabs } from 'antd';
 import Util from '../../util';
 import CodeBlock from './CodeBlock';
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Spin } from 'antd';
 import { UserManager } from 'oidc-client';
-import MainLayout from '../layout/MainLayout';
 
 
 export default class extends React.Component {

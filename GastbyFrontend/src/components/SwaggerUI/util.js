@@ -61,7 +61,8 @@ const performApiRequest = (type, url, params, acesstoken) => {
         url: url,
         headers: {
             'Authorization': `Bearer ${acesstoken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
+            'CompanyKey': 'c6720a75-7d53-49fa-97dd-cc3bfce6af62'
         },
         responseType: 'application/json',
         params: params.path,

@@ -37,7 +37,3 @@ export default class ActionItem extends React.Component {
         )
     }
 }
-
-const styles = {
-
-}

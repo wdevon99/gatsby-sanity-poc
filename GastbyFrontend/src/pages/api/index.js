@@ -3,7 +3,7 @@ import { withAuth } from '../../providers/AuthProvider';
 import MainLayout from '../../layout/MainLayout';
 import SwaggerUI from '../../components/SwaggerUI';
 import workerSwagger from './swagger/worker.json';
-//import allSwagger from './swagger/all.json';
+import allSwagger from './swagger/all.json';
 
 class API extends React.Component {
 
