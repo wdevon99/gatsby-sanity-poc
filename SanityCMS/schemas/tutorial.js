@@ -45,6 +45,11 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
+    },
+    {
+      name: 'bodyMarkdown',
+      title: 'Body Markdown',
+      type: 'markdown'
     }
   ]
 }

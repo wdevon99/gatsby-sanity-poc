@@ -14,6 +14,15 @@ export default {
   type: 'array',
   of: [
     {
+      type: 'code'
+    },
+    {
+      type: 'customMarkdown'
+    },
+    {
+      type: 'customVideo'
+    },
+    {
       title: 'Block',
       type: 'block',
       // Styles let you set what your user can mark up blocks with. These
