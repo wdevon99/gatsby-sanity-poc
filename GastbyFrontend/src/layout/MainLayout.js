@@ -2,6 +2,7 @@ import React from "react"
 import TopNavBar from '../components/TopNavBar'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+import '../styles/main.css';
 
 const { Content } = Layout;
 
