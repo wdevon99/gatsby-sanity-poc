@@ -28,7 +28,16 @@ class API extends React.Component{
       }
 
     componentDidMount() {
-        console.log(this.props.authState)
+        this.loadData();
+    }
+
+    componentWillReceiveProps(np) {
+        if(np.authState.loggedIn != this.props.authState.loggedIn) {
+            this.loadData();
+        }
+        // this.loadData();
+    }
+    loadData() {
         const context = this;
        if(this.props.authState.user) {
         fetch('https://devapi-unieconomy.azurewebsites.net/api/init/companies', {
@@ -45,9 +54,10 @@ class API extends React.Component{
             // console .log(response.json())
             return response.json();
         })
-        .then(function(res) {
-            console.log(res);
+        .then((res)  => {
             context.setCompanies(res);
+            var elmnt = document.getElementById(this.props.location.hash.replace('#',''));
+            elmnt && setTimeout(() => elmnt.scrollIntoView(), 500);
         })
         .catch(e => {
             console.log(e);
@@ -62,6 +72,16 @@ class API extends React.Component{
                 // SiderBarComponent={<DocsSideBar groupedTutorials={[]}/>}
             >
                 <h3>API</h3>
+                <button style={{ position: 'absolute', top: 80, right: 0}} onClick={()=> { 
+                    function getRandomArrayElement(arr){
+                        var min = 0;
+                        var max = (arr.length - 1);
+                        var randIndex = Math.floor(Math.random() * (max - min)) + min;
+                        return arr[randIndex];
+                    }
+                    var elmnt = document.getElementById(getRandomArrayElement(['446', '447', '448']));
+                    elmnt.scrollIntoView();
+                }}>Click me to load Hash programmetically</button>
                 <br />
                 <h1>Company list</h1>
                 <br />
