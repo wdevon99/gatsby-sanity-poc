@@ -1,0 +1,26 @@
+{
+  "name": "template",
+  "private": true,
+  "description": "Template",
+  "version": "0.0.1",
+  "author": "99XT",
+  "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.6",
+    "gatsby": "^2.0.105",
+    "gatsby-image": "^2.0.20",
+    "gatsby-source-sanity": "^4.0.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  }
+}

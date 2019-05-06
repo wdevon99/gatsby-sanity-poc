@@ -1,0 +1,29 @@
+{
+  "name": "cms",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "package.json",
+  "author": "@99XT",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "test": "sanity check"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^0.140.12",
+    "@sanity/components": "^0.140.12",
+    "@sanity/core": "^0.140.12",
+    "@sanity/default-layout": "^0.140.12",
+    "@sanity/default-login": "^0.140.3",
+    "@sanity/desk-tool": "^0.140.13",
+    "@sanity/vision": "^0.140.12",
+    "prop-types": "^15.6",
+    "react": "^16.2",
+    "react-dom": "^16.2"
+  },
+  "devDependencies": {}
+}
