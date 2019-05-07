@@ -7,6 +7,7 @@ module.exports = {
     author: `@99XT`
   },
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-source-sanity',
       options: {
